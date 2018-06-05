@@ -26,10 +26,10 @@ export default function reducer(state=initialState, action) {
 
         case REMOVE_FROM_SHOPPING_CART:
             let newArray = state.shoppingCart.slice();
-            newArray.splice(action.index, 1);
+            newArray.splice(action.payload, 1);
             return Object.assign({}, {shoppingCart: newArray});
             
-        defualt:
+        default:
             return state;
     }
 }
@@ -43,6 +43,7 @@ export function addToShoppingCart(product) {
 }
 
 export function removeFromShoppingCart(productIndex) {
+    console.log("called")
     return {
         type: REMOVE_FROM_SHOPPING_CART,
         payload: productIndex
